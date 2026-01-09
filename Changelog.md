@@ -9,3 +9,4 @@ Dec 6th 2025
 Jan 9th 2025
 0.3 Added Version Plan
 0.4 Added Timeline
+1.0 Created a new branch for version 1
