@@ -24,4 +24,39 @@ rooms = {
   }, 
   "Exit": {
       "description": "You are at the exit door. You can finally leave.", 
+      "exits": {}, 
+      "type": "exits"
+  }
+}
+start_room = "Lobby"
+
+
+def show_map_info(): 
+    print("Map loaded. Rooms in this biulding:\n")
+
+    for room_name in rooms: 
+        room = rooms[room_name]
+        print("Room:", room_name)
+        print("Type:", room["type"])
+        print("Description:", room["decription"]) 
+        print("Exits:", ", ".join(room["exits"].keys()))
+        print() 
+
+
+show_map_info()
+print("Starting room is:", start_room)
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
               
