@@ -16,11 +16,11 @@ rooms = {
     }, 
     "Office": {
         "description": "You are in an office. There is a keypad on the door.", 
-        "exits": {"west": "Hallway", "north": "Exit"}, 
-        "type": "normal" 
+        "exits": {"south": "Hallway"}, 
+        "type": "math" 
     }, 
-    "Exit": {
-        "description": "You are at the exit door. You can finally leave.",
+    "Stairs": {
+        "description": "You are at the stairs. You can go ",
         "exits": {}
         "type": "exit" 
 
