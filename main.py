@@ -22,7 +22,23 @@ rooms = {
     "Stairs": {
         "description": "You are at the stairs. You can go ",
         "exits": {}
-        "type": "exit" 
+        "type": "normal" 
+    }, 
+    "Exit": {
+        "description": "You are at the stairs. You can go up to the exit door.",
+        "exits": {}, 
+        "type": "exit"
+    }
+}
+
+current_room = "Lobby"
+chances = 3
+
+
+def show_room(room_name): 
+    room = rooms[room_name]
+    print("\nRoom:", room_name)
+    print
 
 
 
