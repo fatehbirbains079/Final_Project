@@ -38,8 +38,35 @@ chances = 3
 def show_room(room_name): 
     room = rooms[room_name]
     print("\nRoom:", room_name)
-    print
+    print(room["description"])
 
+    exits = room["exits"].keys()
+    if len(room["exits"]) == 0: 
+            print("Exits: none")
+    else: 
+        print("Exits:", ", ".join(exits))
+
+def get_move(): 
+    while True: 
+        move = input("\nMove (north/south/east/west) or quit:").lower()
+
+        if move == "quit"
+            return "quit"
+
+        if move in ["north", "south", "east", "west"]: 
+            return move 
+
+        print("Invalid input. Try again.")
+
+
+    def ask_math_questions(): 
+        num1 = random.randint(1, 10)
+        num2 = random.randint(1. 10)
+        correct = num1 + num2 
+
+        while True: 
+            answer = input(f"Solve to unlock the door: {num1} + {num2} = ")
+            
 
 
 
