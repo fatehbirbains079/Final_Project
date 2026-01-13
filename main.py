@@ -58,16 +58,72 @@ def get_move():
 
         print("Invalid input. Try again.")
 
-
-    def ask_math_questions(): 
+def ask_math_questions(): 
         num1 = random.randint(1, 10)
         num2 = random.randint(1. 10)
         correct = num1 + num2 
 
         while True: 
             answer = input(f"Solve to unlock the door: {num1} + {num2} = ")
-            
 
+            if answer.isdigit(): 
+                answer = int(answer)
+                break
+
+            print("Please enter a number.")
+
+        if answer == correct: 
+            print("Correct! The door unlocks.")
+            return True 
+
+        print("Wrong answer!")
+        return False 
+
+
+def try_move(room_name, direction): 
+    global chances 
+
+    room = rooms[room_name]
+
+    if direction not in room["exits"]: 
+        print("You can't go that way.")
+        return room_name
+
+    next_room = room["exits"][direction]
+
+    if rooms[next_room]["type"] == "math": 
+        passed = ask_math_question()
+        if passed: 
+            return next_room
+
+        chances -= 1
+        print("Chances left:", chances)
+        print("The door stays locked. You remain in the correct room.")
+        return room_name 
+
+    return next_room 
+
+
+while True: 
+    print("\nChances:", chances)
+    show_room(current_room)
+
+    if chances == 0: 
+        print("\nNo chances left. You are stuck in the building.")
+        break 
+
+    if rooms[current_room]["type"] == "exit": 
+        print("\mYou escaped the building!")
+        break 
+
+    choice = get_move()
+
+    if choice == "quit": 
+        print("You quit the game.")
+        break
+
+    current_room = try_move(current_room, choice)
+    
 
 
 
