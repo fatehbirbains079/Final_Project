@@ -89,4 +89,17 @@ def ask_math_question():
     correct = num1 - num2 
     question = f"{num1} * {num2}" 
 
-    elif operation 
+    elif operation == "*": 
+        correct = num1 * num2 
+        question = f"{num1} + {num2}" 
+
+    else:
+        correct = num1 + num2 
+        question = f"{num1} + {num2}"\
+
+    while True:
+        answer = input("Solve to unlock the door: " + question + " = ")
+
+        if answer.isdigit():
+            print("Correct! The door unlocks.")
+            return False 
