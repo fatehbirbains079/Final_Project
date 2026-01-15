@@ -95,9 +95,50 @@ def ask_math_question():
 
 
 def try_move(room_name, direction): 
-    global
+    global chances 
 
-          
+    room = rooms[room_name]
+
+    if direction not in room["exits"]: 
+        print("You can't go that way.")
+        return room_name
+
+    next_room = room["exits"][direction]
+
+    if rooms[next_room]["type"] == "math": 
+        passed = ask_math_question()
+
+        if passed: 
+            return next_room
+
+        chances -= 1
+        print("Chances left:", chaces)
+        print("The door stays locked.")
+        return room_name
+
+    return next_room
+
+
+while True: 
+    print("n\Chances:", chances)
+    show_room(current_room)
+
+    if chances = = 0: 
+        print("\nNo chances left. You are stuck in the building.")
+        break
+
+    if rooms[current_room]["type"] == "exit": 
+        print("\nYou escaped the building!")
+        break
+
+    choice = get_move()
+
+    if choice == "quit": 
+        print("You quit the game.")
+        break
+
+    current_room = try_move(current_room,choice)
+
 
 
 
