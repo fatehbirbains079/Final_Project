@@ -26,7 +26,7 @@ rooms = {
     }, 
     "Stairs Up": {
         "description": "You are at the stairs going up to the second floor.", 
-        "exits": {"north": "Second Hallway", "northwest": "Second Hallway"}, 
+        "exits": {"north": "Second Hallway"}, 
         "type": "normal"
     }, 
     "Second Hallway": {
@@ -47,6 +47,11 @@ rooms = {
     "Security Room": { 
         "description": "You are in the security room. The exit is here.",
         "exits": {"west": "Second Hallway", "north: "Rooftop Exit"}, 
+        "type": "math"
+    }, 
+    "Rooftop Exit": { 
+        "description": "You reached the rooftop exit door. You can finally leave", 
+        "exits": {}, 
         "type": "math"
     }
 }
@@ -101,5 +106,73 @@ def ask_math_question():
         answer = input("Solve to unlock the door: " + question + " = ")
 
         if answer.isdigit():
-            print("Correct! The door unlocks.")
-            return False 
+            answer = int(answer)
+            break
+
+        print("Please enter a number.")
+
+    if answer == correct
+        print("Correct! The door unlocks.")
+        return True 
+
+    print("Wrong answer!")
+    return False
+
+
+def try_move(room_name, direction): 
+    global chances 
+
+    room = rooms[room_name]
+
+    if direction not in room["exits"]: 
+        print("You can't go that way.")
+        return room_name 
+
+    next_room = room["exits"][direction]
+
+    if rooms[next_room]["type"] == "math": 
+        passed = ask_math_question() 
+
+        if passed: 
+            return next_room 
+
+        chances -= 1
+        print("Chances left:", chances)
+        print("The door stays locked.")
+        return room_name 
+
+    return next_room 
+
+
+while True: 
+    print("\nChances:", chances)
+    show_room(current_room)
+
+    if chances == 0: 
+        print("\nNo chances left. You are stuck in the building.") 
+        break 
+
+    if rooms[current_room]["type"] == "exit": 
+        print("\nYou escaped the building!")
+        break 
+
+    choice = get_move() 
+
+    if choice == "quit": 
+        print("You quit the game.")
+        break 
+
+    current_room = try_move(current_room, choice)
+    
+
+
+
+
+
+
+
+
+
+
+
+        
