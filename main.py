@@ -1,1 +1,39 @@
-print("Hi")
+#CS30 Final Project 
+#Version 6: Difficulty Option 
+
+import random
+
+rooms = {
+    "Lobby": { 
+        "description": "You are in the lobby. The doors are locked.", 
+        "exits": {"east": "Hallway"}, 
+        "type": "start"
+    }, 
+    "Hallway": {
+        "description": "You are in a hallway. It is quiet and dark.", 
+        "exits": {"west": "Lobby", "north": "Office", "east": "Storage", "south": "Stairs Up"}, 
+        "type": "normal"
+    }, 
+    "Office": {
+        "description": "You are in an Office. There is a keypad on the door.",
+        "exits": {"south": "Hallway"}, 
+        "type": "math" 
+    }, 
+    "Storage": {
+        "description": "You are in a storage room. Boxes are everywhere.", 
+        "exits": {"west": "Hallway"}, 
+        "type": "normal"
+    }, 
+    "Stairs Up": {
+        "description": "You are at the stairs going up to the second floor.", 
+        "exits": {"north": "Second Hallway"}, 
+        "type": "normal"
+
+
+
+
+
+
+
+      
+  
