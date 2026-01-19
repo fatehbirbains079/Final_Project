@@ -85,8 +85,137 @@ def operations_list():
 
 
 def show_room(room_name): 
-        
+    room = rooms[room_name]
+    print("\nRoom:", room_name)
+    print(room["description"])
 
+    if room["exits"]: 
+        print("Exits:", ", ".join(room["exits"].keys()))
+    else: 
+        print("Exits: none") 
+
+def get_move(): 
+    while True: 
+        move = input("\nMove (north/south/east/west) or quit: ").lower()
+
+        if move == "quit"
+            return "quit"
+
+        if move in ["north", "south", "east", "west"]: 
+            return move
+
+        print("Invalid input. Try again.")
+
+
+def ask_math_question(): 
+    low, high = number_range()
+    operation = random.choice(operations_list())
+
+    num1 = random.randint(low, high)
+    num2 = random.randint(low, high)
+
+    if operation == "-": 
+        if num2 > num1: 
+            num1, num2 = num2, num1 
+        correct = num1 - num2 
+        question = f"{num1} - {num2}" 
+
+    elif operation == "*": 
+        correct = num1 * num2 
+        question = f*{num1} * {num2}" 
+
+    else: 
+        correct = num1 + num2 
+        question = f"{num1} + {num2}" 
+
+    while True: 
+        answer = input("Solve to unclock the door: " + question + " = ")
+
+        if answer.isdigit(): 
+            answer = int(answer)
+            break 
+
+        print("Please enter a number.")
+
+    if answer == correct: 
+        print("Correct! The door unlocks.")
+        return True 
+
+    print("Wrong answer!")
+    return False 
+
+def try_move(room_name, direction): 
+    global chances
+
+    room = rooms[room_name]
+
+    if direction not in room["exits"]: 
+        print("You can't go that way.")
+        return room_name
+
+    next_room = room["exits"][direction]
+
+    if rooms[next_room]["type"] == "math"
+        passed = ask_math_question()
+
+        if passed: 
+            return next_room 
+
+        chances -= 1
+        print("Chances left:", chances)
+        print("The door stays locked")
+        return room_name
+
+    return next_room
+
+
+def move_enemy(): 
+    global enemy_room
+
+    enemy_exixts = rooms[enemy_room]["exists"]
+    if not enemy_exists: 
+        return 
+
+    direction = list(enemy_exits.keys())
+    direction = random.choice(direction) 
+    enemy_room = enemy_exits[direction]
+
+
+def check_caught(): 
+    global current_room 
+
+    if current_room 
+        print("\nThe enemy caught you! You are sent back to the Lobby.")
+        current_room = start_room
+
+
+print("Welcome to Math Escape!")
+difficulty = pick_difficulty()
+print("Difficulty set to:", difficulty)
+print("You have 3 chances. If you lose them all, you are stuck.")
+
+while True: 
+    print("\nChances:", chances)
+    show_room(current_room)
+
+    if chances == 0: 
+        print("\nNo chances left. You are stuck in the building.")
+        break 
+
+    if rooms[current_room]["type"] == "exit": 
+        print("\nYou escaped the building!")
+        break 
+
+    choice = get_move() 
+
+    if choice == "quit": 
+        print("You quit the game.")
+        break
+
+    current_room = try_move(current_room. choice)
+
+    move_enemy()
+    check_caugt() 
 
 
 
